@@ -1,51 +1,31 @@
 package com.arcedia.config;
-import java.util.Scanner;
- 
-// An Enum class
-enum Day
-{
-    SUNDAY, MONDAY, TUESDAY, WEDNESDAY,
-    THURSDAY, FRIDAY, SATURDAY;
-}
- 
-// Driver class that contains an object of "day" and
-// main().
-public class Test
-{
-    Day day;
- 
-    // Constructor
-    public Test(Day day)
-    {
-        this.day = day;
-    }
- 
-    // Prints a line about Day using switch
-    public void dayIsLike()
-    {
-        switch (day)
-        {
-        case MONDAY:
-            System.out.println("Mondays are bad.");
-            break;
-        case FRIDAY:
-            System.out.println("Fridays are better.");
-            break;
-        case SATURDAY:
-        case SUNDAY:
-            System.out.println("Weekends are best.");
-            break;
-        default:
-            System.out.println("Midweek days are so-so.");
-            break;
-        }
-    }
- 
-    // Driver method
-    public static void main(String[] args)
-    {
-        String str = "MONDAY";
-        Test t1 = new Test(Day.valueOf(str));
-        t1.dayIsLike();
-    }
+
+public class Test {
+	public static void rotate(int[] nums, int k) {
+		if (k > nums.length)
+			k = k % nums.length;
+		int[] result = new int[nums.length];
+		for (int i = 0; i < k; i++) {
+			System.out.println("i      "+i);
+			result[i] = nums[nums.length - k + i];
+		}
+		
+		int j = 0;
+		for (int i = k; i < nums.length; i++) {
+			result[i] = nums[j];
+			j++;
+		}
+		
+		System.arraycopy(result, 0, nums, 0, nums.length);
+		for (int i : result) {
+			System.out.println(i);
+		}
+	}
+
+	public static void main(String[] args) {
+		int nums[] = { 1, 2, 3, 4, 5, 6, 7 };
+		rotate(nums, 3);
+
+	}
+
 }
